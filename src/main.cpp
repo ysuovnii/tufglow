@@ -78,10 +78,10 @@ void usage() {
         "  off\n"
         "  brightness <0-3>\n"
         "  rgb <r> <g> <b>\n"
+        "  hexcode\n"
         "  quit\n"
         "\n";
 }
-
 
 int main() {
     string line;
@@ -94,7 +94,6 @@ int main() {
         cout << "tufglow ❯ ";
 
         if (!getline(cin, line)) break;
-
         if (line.empty()) continue;
 
         istringstream iss(line);
@@ -178,6 +177,19 @@ int main() {
             }
 
             setRGB(255, 255, 255);
+        }
+
+        else if (command[0] == '#') {
+          if(command.length() != 7) {
+            cerr << "Invalid HEX Code\n";
+            continue;
+          }
+
+          int hexR = stoi(command.substr(1, 2), nullptr, 16);
+          int hexG = stoi(command.substr(3, 2), nullptr, 16);
+          int hexB = stoi(command.substr(5, 2), nullptr, 16);
+
+          setRGB(hexR, hexG, hexB);
         }
 
         else if (command == "off") {
