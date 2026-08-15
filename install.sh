@@ -8,9 +8,9 @@ if ! g++ -std=c++17 ./src/main.cpp -o ./build/tufglow; then
   exit 1
 fi 
 
-mkdir -p ~$HOME/.local/bin 
-cp build/tufglow ~$HOME/.local/bin/tufglow
-chmod +x ~$HOME/.local/bin/tufglow 
+sudo mkdir -p /usr/local/bin
+sudo cp build/tufglow /usr/local/bin/tufglow
+sudo chmod +x /usr/local/bin/tufglow
 
 echo
 echo "TUFGlow installed successfully"
